@@ -1,5 +1,7 @@
 # 30-Days-of-React
 
+<i>Inspired by Lenora Porter's [30 Days of Ember](https://github.com/lenoraporter/30-days-of-Ember) Study Guide<i>
+
 <code>Table of Contents</code>
 
 - [30-Days-of-React](#30-days-of-react)
