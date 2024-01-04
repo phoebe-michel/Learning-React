@@ -98,6 +98,8 @@ By mastering these core concepts, you'll be well-equipped to build efficient and
 
 ### 🗣 Auditory Resources:
 
+1. [JS Party Podcast: Getting Hooked on React](https://changelog.com/jsparty/186)
+
 
 &nbsp;
 
