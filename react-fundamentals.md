@@ -20,6 +20,11 @@
       - [Stateless Class Component](#stateless-class-component)
   - [Functional Components](#functional-components)
     - [Creating a Functional Component](#creating-a-functional-component)
+  - [Class Components](#class-components)
+    - [Creating a Class Component](#creating-a-class-component)
+  - [Functional vs. Class Components](#functional-vs-class-components)
+    - [Functional Components](#functional-components-1)
+    - [Class Components](#class-components-1)
 
 ## Introduction
 
@@ -272,3 +277,97 @@ Note: For component file naming, we use pascalCase.
 <div align="right">
 <a href="#react-fundamentals">Back to Top &#8593</a>
 </div>
+
+## Class Components
+
+`Basically ES6 classes`
+
+- Just like functional components, it receives props as input and returns HTML.
+- Can also maintain a private internal state, which means it can maintain *some* information (which is private to that component) and use that information to describe the UI.
+
+### Creating a Class Component
+
+1. Import React and the Component class from react.
+
+    *Welcome.js*
+
+    ```js
+    import React, { Component } from 'react';
+    ```
+
+2. Define the class
+
+    ```js
+    import React, { Component } from 'react';
+
+    class Welcome {
+      
+    }
+    ```
+
+    In order for this class to become a React component, 
+      - it should extend the `Component` class from `react`. 
+      - it needs to implement a `render` method, which will either return null or some HTML.
+- 
+    ```js
+    import React, { Component } from 'react';
+
+    class Welcome extends Component {
+      render() {
+        return <h1>Class Component</h1>
+      }
+    }
+    ```
+
+3. Just like in functional components, export the `Welcome` function
+
+    ```js
+    export default Welcome;
+    ```
+
+4. Import the `Welcome` component in `App.js` and include the custom tag in the `App` component
+
+    *App.js*
+    ```js
+    import React from 'react';
+    import Greet from './components/Greet'
+    import Welcome from './components/Welcome'
+    
+    function App() {
+      return (
+        <div className="App">
+          <Greet />
+          <Welcome />
+        </div>
+      );
+    }
+    export default App;
+    ```
+
+<div align="right">
+<a href="#react-fundamentals">Back to Top &#8593</a>
+</div>
+
+## Functional vs. Class Components
+
+### Functional Components
+
+aka <s>Stateless</s>/Dumb/Presentational Components
+
+- Simple Functions
+- Try to use them as much as possible: If it is possible to use both approaches, *always* choose functional components
+
+  **Advantages of Functional Components:**
+    
+    - Absence of `this` keyword
+    - ~~Solution without using state~~
+    - Mainly responsible for the UI
+
+### Class Components
+
+aka Stateful/Smart/Container
+
+- More feature rich
+- ~~Maintain their own private data - state~~
+- Complex UI logic
+- ~~Provide lifecycle hooks~~
