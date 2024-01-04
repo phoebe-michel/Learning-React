@@ -25,6 +25,11 @@
   - [Functional vs. Class Components](#functional-vs-class-components)
     - [Functional Components](#functional-components-1)
     - [Class Components](#class-components-1)
+    - [Hooks Update](#hooks-update)
+  - [JSX](#jsx)
+    - [Why do we need JSX?](#why-do-we-need-jsx)
+    - [How does JSX work behind the scenes?](#how-does-jsx-work-behind-the-scenes)
+    - [Some Differences in JSX vs. HTML](#some-differences-in-jsx-vs-html)
 
 ## Introduction
 
@@ -371,3 +376,92 @@ aka Stateful/Smart/Container
 - ~~Maintain their own private data - state~~
 - Complex UI logic
 - ~~Provide lifecycle hooks~~
+
+### Hooks Update 
+
+**Note**: Since the introduction ofd React Hooks, `state` and `Hooks`, which were originally exclusive to Class components, can now be used in functional components as well.
+
+<div align="right">
+<a href="#react-fundamentals">Back to Top &#8593</a>
+</div>
+
+## JSX
+
+`JavaScript XML (JSX) - Extension to the JavaScript language syntax`
+
+- Write XML-like code for elements and components
+- Just like XML, JSX tags have a tag name, attributes and children
+
+### Why do we need JSX?
+
+- JSX is not a necessity to write React applications, but JSX makes React code simpler and more elegant
+- JSX transpiles to pure JavaScript which is understood by the browser
+
+### How does JSX work behind the scenes?
+
+Here is a component created with JSX:
+
+*Hello.js*
+
+```js
+const Hello = () => {
+    return (
+        <div>
+            <h1>Hello Phoebe</h1>
+        </div>
+    )
+}
+```
+
+Now, here is the same component written without JSX:
+
+```js
+const Hello = () => {
+  return React.createElement(
+    "div",
+    null,
+    React.createElement("h1", null, "Hello Phoebe")
+  );
+};
+```
+
+In the above example, The `.createElement()` accepts three parameters:
+
+1. A string value specifying the HTML tag to be rendered. For our example, we need a `div` tag to be rendered.
+
+2. Any optional properties, represented by an object of key/value pairs, used to describe the element. In our case, we aren't passing any props so the value is set to `null`.
+
+3. The children for the HTML element. For our example, we just needed to pass the text `Hello Phoebe`. But since the text is within a nested tag, `<h1>`, we called the `createElement()` method again as the 3rd parameter and set the value as the text in there.
+
+Let's say we wanted to pass props to the 2nd parameter, such as an `id` or `class` attributes. Here is what our component would now look like:
+
+```js
+const Hello = () => {
+  return React.createElement(
+    "div",
+    {id: 'hello', className: 'testClass'},
+    React.createElement("h1", null, "Hello Phoebe")
+  );
+};
+```
+
+**Note**: Since `class` is considered a special keyword in React used to create components, a CSS class has to be specified using the `className` attribute.
+
+As you can see, it's a much simpler approach to write components with JSX.
+
+When you import React into a component file, JSX translates it into `React.createElement()`, which in turn uses the React library.
+
+
+### Some Differences in JSX vs. HTML
+
+1. class -> className
+2. for -> htmlFor
+3. camelCase property naming convention instead of HTML attribute names.
+   
+   Ex:
+   
+   - onclick -> onClick
+   - tabindex -> tabIndex
+
+
+

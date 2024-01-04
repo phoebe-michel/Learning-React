@@ -145,10 +145,10 @@ Total Time: **1 hour, 41 minutes**
 | &check; | 2. [Hello World](https://youtu.be/9hb_0TZ_MVI?si=SDZng-cCHAL2T-K8) | 4:54 |
 | &check; | 3. [Folder Structure](https://youtu.be/9VIiLJL0H4Y?si=DlQOPQYXat2ignEp) | 5:35 |
 | &check; | 4. [Components](https://youtu.be/Y2hgEGPzTZY?si=FvrslVyDzfug8j5R) | 4:59 |
-|   | 5. [Functional Components](https://youtu.be/Cla1WwguArA?si=ads96t8uhQfe25Fa) | 6:33 | 
-|   | 6. [Class Components](https://www.youtube.com/watch?v=lnV34uLEzis&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&index=6) | 6:22 |
-|   | 7. [Hooks Update](https://youtu.be/oecI26cWqzk?si=suLz2OI5kceW_17N) | 3:54 |
-|   | 8. [JSX](https://youtu.be/7fPXI_MnBOY?si=ap5oTSUYIbY3sEAf) | 11:25 |
+| &check; | 5. [Functional Components](https://youtu.be/Cla1WwguArA?si=ads96t8uhQfe25Fa) | 6:33 | 
+| &check; | 6. [Class Components](https://www.youtube.com/watch?v=lnV34uLEzis&list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3&index=6) | 6:22 |
+| &check; | 7. [Hooks Update](https://youtu.be/oecI26cWqzk?si=suLz2OI5kceW_17N) | 3:54 |
+| &check; | 8. [JSX](https://youtu.be/7fPXI_MnBOY?si=ap5oTSUYIbY3sEAf) | 11:25 |
 |   | 9. [Props](https://youtu.be/m7OWXtbiXX8?si=enVuCwwpE9IT9Hqk) | 11:37 |
 |   | 10. [State](https://youtu.be/4ORZ1GmjaMc?si=025_3MWB7H8WanZN) | 10:35 |
 |   | 11. [setState](https://youtu.be/uirRaVjRsf4?si=akcQmd7d_OUJe23I) | 14:30 |
