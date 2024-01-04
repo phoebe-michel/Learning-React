@@ -19,6 +19,7 @@
       - [Stateless Functional Component](#stateless-functional-component)
       - [Stateless Class Component](#stateless-class-component)
   - [Functional Components](#functional-components)
+    - [Creating a Functional Component](#creating-a-functional-component)
 
 ## Introduction
 
@@ -169,8 +170,105 @@ class Welcome extends React.Component {
 
 The tutorial shows that the App Component in their example is a Class Component. However, in the `App.js` file in our `hello-world` app, you can see that our `App` Component is a Functional Component. It simply returns the HTML that will display to our browser.
 
+<div align="right">
+<a href="#react-fundamentals">Back to Top &#8593</a>
+</div>
+
 ## Functional Components
 
 `Functional Components are simply JavaScript functions.`
 
-- Can optionally receive an object of properties (aka props), and return HTML which describes the UI.
+- Can optionally accept an input of properties (aka props), and return HTML which describes the UI.
+- HTML is known as `JSX`
+- Component is simply a JS file
+
+Let's create our first component in our `hello-world` app by adding a JavaScript file, `Greet.js`, in a newly created folder named `components`.
+
+Note: For component file naming, we use pascalCase.
+
+### Creating a Functional Component
+
+1. Inside of `Greet.js`, import `React`.
+
+    *Greet.js*
+    ```js
+    import React from 'react';
+    ```
+
+1. Create a new function and return the HTML you want rendered in the browser
+
+    *Greet.js*
+      ```js
+      import React from 'react';
+
+      function Greet() {
+        return <h1></h1>
+      }
+      ```
+
+3. Export the `Greet()` component to make accessible to our application
+
+    *Greet.js*
+    ```js
+    import React from 'react';
+
+    function Greet() {
+      return <h1></h1>
+    }
+
+    export default Greet;
+    ```
+
+4. Inside the `App.js` file, import the `Greet` component
+5. Include the `Greet` component inside the `App` component as a custom HTML tag
+
+    *App.js*
+    ```js
+    import React from 'react';
+    import Greet from './components/Greet'
+
+    function App() {
+      return (
+        <div className="App">
+          <Greet></Greet>
+        </div>
+      );
+    }
+
+    export default App;
+    ```
+
+    **Note**: Since there's no content in between the tags, you can change it to a self-closing tag.
+
+    *App.js*
+    ```js
+    import React from 'react';
+    import Greet from './components/Greet'
+
+    function App() {
+      return (
+        <div className="App">
+          <Greet />
+        </div>
+      );
+    }
+
+    export default App;
+    ```
+
+    Let's rewrite our `Greet()` function as an ES6 arrow function:
+
+    *Greet.js*
+    ```js
+    import React from "react";
+
+    const Greet = () => {
+        return <h1>Hello, Phoebe</h1>
+    }
+
+    export default Greet;
+    ```
+
+<div align="right">
+<a href="#react-fundamentals">Back to Top &#8593</a>
+</div>
