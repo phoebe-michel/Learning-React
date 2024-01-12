@@ -38,6 +38,10 @@
     - [Comparing State \& Props](#comparing-state--props)
     - [Using Component State](#using-component-state)
     - [Dos \& Donts of 'State' \&\& 'setState'](#dos--donts-of-state--setstate)
+  - [Destructuring Props \& State](#destructuring-props--state)
+    - [Destructuring props in a Functional Component](#destructuring-props-in-a-functional-component)
+    - [Destructuring props in a Class Component](#destructuring-props-in-a-class-component)
+    - [Destructuring state](#destructuring-state)
 
 
 ## Introduction
@@ -724,3 +728,83 @@ increment() {
     }))
    }
 ```
+
+<div align="right">
+<a href="#react-fundamentals">Back to Top &#8593</a>
+</div>
+
+## Destructuring Props & State
+
+`Destructuring is an ES6 feauture that makes it possible to unpack values from arrays or properties from objects into distinct variables`
+
+In React, destructuring props and state improves code readability.
+
+More likely to find destructuring syntax in most of the online material.
+
+### Destructuring props in a Functional Component
+
+In `App.js` , we are passing in `name` and `characterName` as `props` to our `Greet` component.
+
+In the `Greet` component, we are accessing them using `props.name` and `props.characterName`.
+
+**We can destructure the props in two different ways**:
+
+1. In the function parameter directly
+
+    We can basically extract `name` and `characterName` from the `props` object, and use these parameters in the JSX
+
+    ```js
+    const Greet = ({name, characterName, children}) => {
+      return (
+        <div>
+          <h1>
+            Hello, {name} a.k.a {characterName}
+          </h1>
+          {children}
+        </div>
+      );
+    };
+    ```
+
+2. Destructure in the function body
+
+    ```js
+    const Greet = props => {
+    const { name, characterName, children } = props;
+    return (
+      <div>
+        <h1>
+        Hello, {name} a.k.a {characterName}
+        </h1>
+        {children}
+      </div>
+      );
+    };
+    ```
+
+### Destructuring props in a Class Component
+
+In class components, `props` or `state` are generally deconstructured in the `render` method:
+
+```js
+class Welcome extends Component {
+    render() {
+        const {name, characterName} = this.props
+        return <h1>Welcome {name} a.k.a {characterName}</h1>
+    }
+}
+```
+
+From `props`, you only need to extract the ones you want to use in your component, no matter how many are stored in the object.
+
+### Destructuring state
+
+`state` can be destructured in a similar way using the following syntax:
+
+```js
+const {state1, state2} = this.state;
+```
+
+<div align="right">
+<a href="#react-fundamentals">Back to Top &#8593</a>
+</div>

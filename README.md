@@ -152,7 +152,7 @@ Total Time: **1 hour, 41 minutes**
 | &check; | 9. [Props](https://youtu.be/m7OWXtbiXX8?si=enVuCwwpE9IT9Hqk) | 11:37 |
 | &check; | 10. [State](https://youtu.be/4ORZ1GmjaMc?si=025_3MWB7H8WanZN) | 10:35 |
 | &check; | 11. [setState](https://youtu.be/uirRaVjRsf4?si=akcQmd7d_OUJe23I) | 14:30 |
-|   | 12. [Destructuring props and state](https://youtu.be/5_PdMS9CLLI?si=B-RO8DaCH6NO4upq) | 11:56 |
+| &check; | 12. [Destructuring props and state](https://youtu.be/5_PdMS9CLLI?si=B-RO8DaCH6NO4upq) | 4:45 |
 
 <div align="right">
 <a href="#30-days-of-react">Back to Top &#8593</a>

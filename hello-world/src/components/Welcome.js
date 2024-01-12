@@ -2,7 +2,8 @@ import React, { Component } from "react";
 
 class Welcome extends Component {
     render() {
-        return <h1>Welcome {this.props.name} a.k.a {this.props.characterName}</h1>
+        const {name, characterName} = this.props
+        return <h1>Welcome {name} a.k.a {characterName}</h1>
     }
 }
 
