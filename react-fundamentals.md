@@ -37,6 +37,7 @@
   - [State](#state)
     - [Comparing State \& Props](#comparing-state--props)
     - [Using Component State](#using-component-state)
+    - [Dos \& Donts of 'State' \&\& 'setState'](#dos--donts-of-state--setstate)
 
 
 ## Introduction
@@ -674,3 +675,52 @@ So when the user clicks on the `Subscribe` button, we are listening to the click
 <div align="right">
 <a href="#react-fundamentals">Back to Top &#8593</a>
 </div>
+
+### Dos & Donts of 'State' && 'setState'
+
+- create new component: counter.js (snippet 'rce')
+- need a `count` state to keep track of the counter values
+  - initialize state in the constructor (snipper: 'rconst')
+  - state object should have a property named `count` with an initial value of `0`.
+- bind state value with curly braces
+- add button to increment count value with click event.
+- define `increment` method
+
+-  if you want to execute code after the state has been updated you can pass in a callback function as the second parameter to the `setState` method
+1st parameter = state object
+2nd parameter = callback function (arrow function)
+
+
+1. Always make use of setState and never modify the state directly: When you try to modify the state directly and don't use `setState`, react will not rerender the component whenever the state changes.
+2. Code has to be executed after the state has been update? Place that code in the callback function, which is the 2nd parameter to the `setState` method:
+
+    ```js
+    this.setState(stateObject, callbackFunction); //callback function will be an arrow function
+    ```
+3. When you have to update the state based on the previous state, pass in a function as an argument instead of the regular object. 
+
+The function has access to the previous state which can be used to calculate the new state.
+
+For example, let's say you create a method that calls the increment method 5x and increases the count by 5 when you click the button
+
+```js
+incrementFive() {
+  this.increment();
+  this.increment();
+  this.increment();
+  this.increment();
+  this.increment();
+}
+```
+
+React may group multiple `setState` calls in one single go. As a result, the different values do not carry over between the different calls. 
+
+Here is how to pass in the previous state:
+
+```js
+increment() {
+    this.setState(prevState => ({
+        count: prevState.count + 1
+    }))
+   }
+```
