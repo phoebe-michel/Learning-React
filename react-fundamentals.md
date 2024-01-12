@@ -18,10 +18,10 @@
     - [Component Types](#component-types)
       - [Stateless Functional Component](#stateless-functional-component)
       - [Stateless Class Component](#stateless-class-component)
-  - [Functional Components](#functional-components)
-    - [Creating a Functional Component](#creating-a-functional-component)
-  - [Class Components](#class-components)
-    - [Creating a Class Component](#creating-a-class-component)
+    - [Functional Components](#functional-components)
+      - [Creating a Functional Component](#creating-a-functional-component)
+    - [Class Components](#class-components)
+      - [Creating a Class Component](#creating-a-class-component)
   - [Functional vs. Class Components](#functional-vs-class-components)
     - [Functional Components](#functional-components-1)
     - [Class Components](#class-components-1)
@@ -34,6 +34,9 @@
     - [Applying Props](#applying-props)
     - [Rendering Unknown Content](#rendering-unknown-content)
     - [Props with Class Components](#props-with-class-components)
+  - [State](#state)
+    - [Comparing State \& Props](#comparing-state--props)
+    - [Using Component State](#using-component-state)
 
 
 ## Introduction
@@ -189,7 +192,7 @@ The tutorial shows that the App Component in their example is a Class Component.
 <a href="#react-fundamentals">Back to Top &#8593</a>
 </div>
 
-## Functional Components
+### Functional Components
 
 `Functional Components are simply JavaScript functions.`
 
@@ -201,7 +204,7 @@ Let's create our first component in our `hello-world` app by adding a JavaScript
 
 Note: For component file naming, we use pascalCase.
 
-### Creating a Functional Component
+#### Creating a Functional Component
 
 1. Inside of `Greet.js`, import `React`.
 
@@ -288,14 +291,14 @@ Note: For component file naming, we use pascalCase.
 <a href="#react-fundamentals">Back to Top &#8593</a>
 </div>
 
-## Class Components
+### Class Components
 
 `Basically ES6 classes`
 
 - Just like functional components, it receives props as input and returns HTML.
 - Can also maintain a private internal state, which means it can maintain *some* information (which is private to that component) and use that information to describe the UI.
 
-### Creating a Class Component
+#### Creating a Class Component
 
 1. Import React and the Component class from react.
 
@@ -580,3 +583,94 @@ As you can see, we specify props for a component as attributes. In the above exa
 
   React is going to bundle all of the attributes into an object, which we, by convention, call it props, and can render in the browser.
 
+<div align="right">
+<a href="#react-fundamentals">Back to Top &#8593</a>
+</div>
+
+## State
+
+### Comparing State & Props
+
+| props | state |
+|-------|-------|
+| props get passed to the component | state is managed within the component |
+|Function parameters | Variables declared in the function body |
+|props are immutable | state can be changed|
+|props - Functional Components <br/> this.props - Class Components | useState Hook - Functional Components <br/> this.state - Class Components
+
+Ultimately, <code>both <ins>props</ins> and <ins>state</ins> hold information that influences the UI in the browser</code>
+
+**Note**: In old codebases, you're more likely to come across the `state` object than the `useState` hook, so its essential to have a good understanding of `state` in Class Components
+
+---
+
+<div align="right">
+<a href="#react-fundamentals">Back to Top &#8593</a>
+</div>
+
+### Using Component State
+
+Let's create a new component named `Welcome` and render it in the `App` component.
+
+Let's say we wanted to have a `Subscribe` button below the text that changes the text from "Welcome Visitor" to "Thank you for subscribing" when clicked.
+
+We can't send the message from the `App` component using `props` because the message won't be able to be changed since `props` are immutable. So, we need to use component state:
+
+**Follow these steps in `Welcome.js`**:
+
+1. Create a state object inside the class constructor and initialize it.
+
+    Since we extend react's Component class, a call has to be made to the base class constructor (aka super).
+
+   ```js
+   constructor() {
+
+   //call the super method
+    super()
+
+      //create our state object
+      this.state = {
+
+        //initialize a property
+        message: "Welcome visitor"
+      }
+    }
+   ```
+
+2. Inside the `render` method, bind the state value.
+3. Add HTML for a button element
+4. Listen to the click event on `Subscribe` button and change the message
+
+```javascript
+render() {
+  return (    
+    <div>
+      <h1>{this.state.message}</h1>
+      <button onClick={() => this.changeMessage()}>Subscribe</button>
+    </div>
+  )
+}
+```
+**Note**: The parentheses are required whenever the JSX spans over multiple lines.
+
+After the `constructor` and before the `render` function, define  the `changeMessage` method. Within the function body, call the `setState` method to change the state of the component.
+
+`setState` is used to alter the state of a class component.
+
+`setState` accepts an object, which is the new state of the component. In the new state, we need the 'message' to change to  "thank you for subscribing".
+
+```js
+changeMessage() {
+  this.setState({
+
+    //change the state of the component
+    message: 'Thank you for subscribing'
+  })
+}
+```
+
+So when the user clicks on the `Subscribe` button, we are listening to the click event and executing the `changeMessage` method
+
+<div align="right">
+<a href="#react-fundamentals">Back to Top &#8593</a>
+</div>
