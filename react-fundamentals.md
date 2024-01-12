@@ -30,6 +30,11 @@
     - [Why do we need JSX?](#why-do-we-need-jsx)
     - [How does JSX work behind the scenes?](#how-does-jsx-work-behind-the-scenes)
     - [Some Differences in JSX vs. HTML](#some-differences-in-jsx-vs-html)
+  - [Props](#props)
+    - [Applying Props](#applying-props)
+    - [Rendering Unknown Content](#rendering-unknown-content)
+    - [Props with Class Components](#props-with-class-components)
+
 
 ## Introduction
 
@@ -463,5 +468,115 @@ When you import React into a component file, JSX translates it into `React.creat
    - onclick -> onClick
    - tabindex -> tabIndex
 
+<div align="right">
+<a href="#react-fundamentals">Back to Top &#8593</a>
+</div>
 
+## Props
+
+`Props. aka properties, is the optional input that your component can accept`
+
+`Props` allow the component to be dynamic
+
+`Props` are <ins>**immutable**</ins> - their value cannot be changed.
+
+### Applying Props
+
+Let's say we wanted to pass a name from the `App` component down to the `Greet` component and render that name to the browser. It would look like this:
+
+```js
+<Greet name="Phoebe"></Greet>
+```
+
+As you can see, we specify props for a component as attributes. In the above example, we are specifying a `name` property to `Greet` as a `name` attribute, and assigning it a value, `Phoebe`.
+
+**To retrieve these values in the `Greet` component**:
+
+1. Add a parameter to the functional component, named `props`:
+
+    ```js
+    const Greet = (props) => {
+      return <h1>Hello, Phoebe</h1>
+    }
+    ```
+
+    Note: You can name the parameter anything you want, but it's considered best practice to name it `props`.
+
+2. Use the `props` parameter in the function body.
+
+    `Props` is essentially an object that contains the attributes and their values which have been passed from the parent component. 
+
+    So, if we wanted to display the name that was passed to the `Greet` component from `App`, we would need to use `props.name`:
+
+    ```js
+    const Greet = props => {
+      return <h1>Hello, {props.name}</h1>
+    }
+    ```
+    The property is wrapped around by curly braces, a JSX feature which is used to evaluate the JSX expression.
+
+    In `App.js`, we can pass different values in the name attribute, which in turn would render in the browser:
+
+    ```js
+      <Greet name="Lisa"></Greet> // returns 'Hello, Phoebe'
+      <Greet name="Courteney"></Greet> // returns 'Hello, Monica'
+      <Greet name="Jennifer"></Greet> // returns 'Hello, Rachel'
+    ```
+
+    Let's say we wanted to pass a second prop to the `Greet` component:
+
+    ```js
+      <Greet name="Lisa" characterName="Phoebe"></Greet>
+      <Greet name="Courteney" characterName="Monica"></Greet>
+      <Greet name="Jennifer" characterName="Rachel"></Greet>
+    ```
+
+    We would simply modify the functional component in `Greet`:
+
+    ```js
+    const Greet = props => {
+      return <h1>Hello, {props.name} a.k.a {props.characterName}</h1>
+    }
+    ```
+
+  ### Rendering Unknown Content
+
+  To render unknown content dynamically within a component, such as unspecified props or HTML, you can use `props.children`.
+
+  ```js
+  //Greet.js
+  const Greet = props => {
+    console.log(props);
+    return (
+      <div>
+         <h1>Hello, {props.name} a.k.a {props.characterName}</h1>
+        {props.children}
+      </div>
+    )
+  }
+  ```
+
+  If anything is passed to `props.children`, it is rendered in the browser. If nothing is passed, `props.children` simply renders nothing.
+
+  **Note**: Only one HTML element can be returned inside of a component which is why all of our content is enclosed inside of one `<div>` wrapper tag.
+
+  ### Props with Class Components
+
+  Let's say we wanted to add the same prop attributes in our `Welcome` component:
+
+  ```js
+ <Welcome name="Lisa" characterName="Phoebe"></Welcome>
+  ```
+
+  Unlike in functional components, class components do not specify a `props` parameter. Instead, the properties are available through `this.props`, which is reserved in class components.
+
+  ```js
+  class Welcome extends Component {
+    render() {
+        return <h1>Welcome {this.props.name} a.k.a {this.props.characterName}</h1>
+    }
+}
+  ```
+
+  React is going to bundle all of the attributes into an object, which we, by convention, call it props, and can render in the browser.
 
