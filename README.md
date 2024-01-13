@@ -163,7 +163,7 @@ Total Time: **1 hour, 40 minutes**
 
 | | Video | Minutes |
 |:-|:------|-------:|
-|   | 13. [Event Handling](https://youtu.be/Znqv84xi8Vs?si=x6kZ37i1ua8DOjs7) | 7:36 |
+| &check; | 13. [Event Handling](https://youtu.be/Znqv84xi8Vs?si=x6kZ37i1ua8DOjs7) | 7:36 |
 |   | 14. [Binding Event Handlers](https://youtu.be/kVWpBtRjkCk?si=4ZQ8Lwra_POABrCb) | 11:56 |
 |   | 15. [Methods as Props](https://youtu.be/QpfyjwhY9kg?si=KTf8ANTzmOJ4LmXA) | 8:45 |
 |   | 16. [Conditional Rendering](https://youtu.be/7o5FPaVA9m0?si=iB6le-R6x7sBM--9) | 11:46 |

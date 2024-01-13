@@ -42,6 +42,10 @@
     - [Destructuring props in a Functional Component](#destructuring-props-in-a-functional-component)
     - [Destructuring props in a Class Component](#destructuring-props-in-a-class-component)
     - [Destructuring state](#destructuring-state)
+  - [Event Handling](#event-handling)
+    - [Handling Events in Functional Components](#handling-events-in-functional-components)
+    - [Event Handling in Class components](#event-handling-in-class-components)
+    - [Common mistakes](#common-mistakes)
 
 
 ## Introduction
@@ -804,6 +808,78 @@ From `props`, you only need to extract the ones you want to use in your componen
 ```js
 const {state1, state2} = this.state;
 ```
+
+<div align="right">
+<a href="#react-fundamentals">Back to Top &#8593</a>
+</div>
+
+## Event Handling
+
+Any web application you create typically tends to have user interaction. When user interacts with webpage, events are fired.
+
+Example: mouse clicks, mouse overs, key press, change events, etc.
+
+The application must handle such events and execute the necessary code.
+
+### Handling Events in Functional Components
+
+JS vs. JSX
+
+in JavaScript, an event would typically be written like this:
+
+```js
+<button onclick="clickHandler()">Click</button>
+```
+
+In JSX, there are a few key differences:
+
+1. React events are named using camelCase. ex: onClick instead of onclick
+
+2. Pass function as event handler instead of string
+
+Here is how a click event would be writtren in JSX:
+
+```js
+<button onClick={clickHandler}>Click</button>
+```
+
+When user clicks on this button, a click event is fired
+
+The goal is to capture the click event and execute some basic code
+
+Let's define the click handler function:
+
+```js
+function FunctionClick() {
+  function clickHandler() {
+    console.log("button clicked!");
+  }
+```
+
+### Event Handling in Class components
+
+Adding a click event handler in a class component is very similar to functional components.
+
+However, in a class component, methods will be accessed using the `this` keyword.
+
+```js
+class ClassClick extends Component {
+    clickHandler() {
+        console.log('Clicked the button')
+    }
+  render() {
+    return (
+      <div>
+        <button onClick={this.clickHandler}>Click Me</button>
+      </div>
+    )
+  }
+}
+```
+
+### Common mistakes
+
+We want the event handler to be a function and not a function call. Do not add parentheses
 
 <div align="right">
 <a href="#react-fundamentals">Back to Top &#8593</a>
